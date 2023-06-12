@@ -12,12 +12,14 @@ function gameBoard() {
     const renderBoard = () => {
         for (let i = 0; i < board.length; i++) {
             const gameDiv = document.createElement('div')
+            let getId = ''
             gameDiv.setAttribute('id', i)
             gameDiv.classList.add('gameStyle')
             gameContainer.appendChild(gameDiv);
             gameDiv.addEventListener('click', e => {
-                console.log(e.target.id);
-            });
+            board[e.target.id] = 'x';
+            console.log(board);
+            })
         }
     }
     renderBoard();
