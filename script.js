@@ -17,9 +17,13 @@ function gameBoard() {
             gameDiv.classList.add('gameStyle')
             gameContainer.appendChild(gameDiv);
             gameDiv.addEventListener('click', e => {
-            board[e.target.id] = 'x';
+                if(board[e.target.id] === '') {
+                    board[e.target.id] = 'x';
+                } else if(board[e.target.id] === 'x') {
+                    alert('Nope!')
+                };
             console.log(board);
-            })
+            });
         }
     }
     renderBoard();
