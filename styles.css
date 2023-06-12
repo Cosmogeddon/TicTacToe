@@ -1,0 +1,20 @@
+.gameStyle {
+    height: 100px;
+    width: 100px;
+    border: solid 1px black;
+    background-color: antiquewhite;
+    }
+
+.gameContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: max-content;
+}
+
+.allContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
