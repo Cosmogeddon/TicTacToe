@@ -12,15 +12,18 @@ function gameBoard() {
     const renderBoard = () => {
         for (let i = 0; i < board.length; i++) {
             const gameDiv = document.createElement('div')
-            gameDiv.setAttribute('data-index', i)
+            gameDiv.setAttribute('id', i)
             gameDiv.classList.add('gameStyle')
             gameContainer.appendChild(gameDiv);
+            gameDiv.addEventListener('click', e => {
+                console.log(e.target.id);
+            });
         }
     }
-    const divs = document.querySelectorAll('[data-index]')
-    console.log(divs)
     renderBoard();
 };
+
+//get position
 
 gameBoard();
 
