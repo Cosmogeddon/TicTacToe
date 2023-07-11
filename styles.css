@@ -1,5 +1,26 @@
 .gameDivs {
-    height: 20px;
-    width: 20px;
+    display: flex;
+    height: 100px;
+    width: 100px;
     border: solid black 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 310px
+}
+
+.allContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
 }
