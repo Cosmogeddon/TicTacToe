@@ -5,6 +5,7 @@
     let gameBoard = ['', '', '',
                     '', '', '',
                     '', '', ''];
+    checkWinner();
 
     const Player = (sign) => {
         return {sign};
@@ -37,8 +38,17 @@
     };
  
     renderGameboard();
+
+    function checkWinner() {
+        if (gameBoard[0] !== '' && gameBoard[0] == gameBoard[1] && gameBoard[2] == gameBoard[1]){
+
+            alert('You Win')
+        };
+    };
+
     function getID() {
         document.addEventListener('click',(event)=>{
+
             let cellID = event.target.getAttribute('id');
             if (gameBoard[cellID] == ''){
                if(playerMaker.round === false) {
