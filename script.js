@@ -5,7 +5,16 @@
     let gameBoard = ['', '', '',
                     '', '', '',
                     '', '', ''];
-    checkWinner();
+
+    (function reset() {
+        document.addEventListener('click', (event)=> {
+            gameBoard = ['', '', '',
+            '', '', '',
+            '', '', ''];
+            removeGameboard();
+            renderGameboard();
+        })
+    })();
 
     const Player = (sign) => {
         return {sign};
@@ -19,7 +28,7 @@
         return {playerX, playerO, round}
     };
 
-
+    
 
     function renderGameboard() {
         for (let i = 0; i < gameBoard.length; i++) {
@@ -28,6 +37,7 @@
             gameDiv.innerText = gameBoard[i];
             gameDiv.id = [i];
             gameContainer.appendChild(gameDiv);
+            getID();
         };
     };
 
@@ -36,23 +46,20 @@
             gameContainer.removeChild(gameContainer.lastChild)
         }
     };
- 
-    renderGameboard();
-
-    function checkWinner() {
-        if (gameBoard[0] !== '' && gameBoard[0] == gameBoard[1] && gameBoard[2] == gameBoard[1]){
-
+    let winner = () => {
+        if (gameBoard[0] !== '' && gameBoard[1] == gameBoard[2] && gameBoard[2] == gameBoard[0]){
             alert('You Win')
         };
-    };
+      };
+
+    renderGameboard();
 
     function getID() {
         document.addEventListener('click',(event)=>{
-
             let cellID = event.target.getAttribute('id');
             if (gameBoard[cellID] == ''){
                if(playerMaker.round === false) {
-                    gameBoard.splice(cellID, 1, 'X')
+                  gameBoard.splice(cellID, 1, 'X')
                   playerMaker.round = true;
                   removeGameboard();
                   renderGameboard();
@@ -68,7 +75,5 @@
             };
 
     })};
-    getID();
-
 
 })();
