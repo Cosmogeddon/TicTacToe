@@ -7,7 +7,7 @@
                     '', '', ''];
 
     (function reset() {
-        document.addEventListener('click', (event)=> {
+        resetButton.addEventListener('click', (event)=> {
             gameBoard = ['', '', '',
             '', '', '',
             '', '', ''];
