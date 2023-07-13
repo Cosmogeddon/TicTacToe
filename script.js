@@ -2,8 +2,8 @@
     const resetButton = document.getElementById('resetButton');
     const gameContainer = document.querySelector('#gameContainer');
 
-    let gameBoard = ['x', '', '',
-                    '', 'o', '',
+    let gameBoard = ['', '', '',
+                    '', '', '',
                     '', '', ''];
 
     const Player = (sign) => {
@@ -28,22 +28,34 @@
             gameDiv.id = [i];
             gameContainer.appendChild(gameDiv);
         };
-
     };
 
+    function removeGameboard() {
+        while (gameContainer.hasChildNodes()) {
+            gameContainer.removeChild(gameContainer.lastChild)
+        }
+    };
+ 
     renderGameboard();
-
     function getID() {
         document.addEventListener('click',(event)=>{
             let cellID = event.target.getAttribute('id');
-            if(playerMaker.round === false) {
-                gameBoard.splice(cellID, 1, 'X')
-                playerMaker.round = true;
-            } else {
-                gameBoard.splice(cellID, 1, 'O')
-                playerMaker.round = false;
+            if (gameBoard[cellID] == ''){
+               if(playerMaker.round === false) {
+                    gameBoard.splice(cellID, 1, 'X')
+                  playerMaker.round = true;
+                  removeGameboard();
+                  renderGameboard();
+                } else {
+                   gameBoard.splice(cellID, 1, 'O')
+                   playerMaker.round = false;
+                   removeGameboard();
+                   renderGameboard();
+                };
+            console.log(gameBoard);}
+            else {
+                getID();
             };
-            console.log(gameBoard);
 
     })};
     getID();
