@@ -1,16 +1,17 @@
-.gameDivs {
+.gameDiv {
     display: flex;
-    height: 100px;
-    width: 100px;
+    height: 99px;
+    width: 99px;
     border: solid black 1px;
     justify-content: center;
     align-items: center;
 }
 
 #gameContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 310px
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    width: 320px
 }
 
 .allContainer {
