@@ -8,6 +8,7 @@ const cell6 = document.getElementById('6')
 const cell7 = document.getElementById('7')
 const cell8 = document.getElementById('8')
 const cell9= document.getElementById('9')
+const results = document.getElementById('results')
 const cells = document.querySelectorAll('.gameDiv')
 const resetButton = document.getElementById('resetButton')
 
@@ -17,7 +18,7 @@ const playerFactory = (sign) => {
 
 const player1 = playerFactory('x');
 const player2 = playerFactory('o');
-let turn = false;
+let turn;
 let sign = '';
 
 let gameBoard = ['','','',
@@ -29,6 +30,7 @@ cells.forEach( function(element){
     element.addEventListener(`click`,function(e){
         updateCell(e.target.id);
         renderGameboard(e.target.id)
+        checkWinner();
         console.log(gameBoard)
     });
 });
@@ -37,7 +39,7 @@ resetButton.addEventListener('click', resetTable)
 
 function updateCell(id) {
     gameBoard.splice(id, 1, determineMark(id))
-}
+};
 
 function resetTable() {
     gameBoard = ['','','',
@@ -52,15 +54,15 @@ function resetTable() {
         cell6.innerHTML = gameBoard[6];
         cell7.innerHTML = gameBoard[7];
         cell8.innerHTML = gameBoard[8];
-
+        results.innerHTML = '';
     console.log(gameBoard)
-}
+};
 
 function determineMark(e) {
-    if(turn == false && gameBoard[e] === '') {
+    if(gameBoard[e] =='') {
         sign = 'X';
-        turn = true;
-    } else if (turn == true && gameBoard[e] === '') {
+        turn = false;
+    } else if (turn == gameBoard[e] == '') {
         sign = 'O';
         turn = false;
     };
@@ -88,3 +90,10 @@ function renderGameboard(e) {
         cell8.innerHTML = gameBoard[e];
     }
 };
+
+function checkWinner() {
+    if (cell0.innerHTML !== ''  && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    }
+};
+
