@@ -18,8 +18,9 @@ const playerFactory = (sign) => {
 
 const player1 = playerFactory('x');
 const player2 = playerFactory('o');
-let turn;
+let turn = true;
 let sign = '';
+let winnerDeclared = false;
 
 let gameBoard = ['','','',
                 '','','',
@@ -38,7 +39,11 @@ cells.forEach( function(element){
 resetButton.addEventListener('click', resetTable)
 
 function updateCell(id) {
-    gameBoard.splice(id, 1, determineMark(id))
+    if (gameBoard[id] == 'X' | gameBoard[id] == 'O') {
+        return;
+    }else {
+        gameBoard.splice(id, 1, determineMark(id))
+    };
 };
 
 function resetTable() {
@@ -55,17 +60,18 @@ function resetTable() {
         cell7.innerHTML = gameBoard[7];
         cell8.innerHTML = gameBoard[8];
         results.innerHTML = '';
+        winnerDeclared = false;
     console.log(gameBoard)
 };
 
 function determineMark(e) {
-    if(gameBoard[e] =='') {
+    if (turn == true && gameBoard[e] === '') {
         sign = 'X';
         turn = false;
-    } else if (turn == gameBoard[e] == '') {
+    } else if (turn == false && gameBoard[e] === '') {
         sign = 'O';
-        turn = false;
-    };
+        turn = true;
+    }
     return sign;
 };
 
@@ -92,8 +98,32 @@ function renderGameboard(e) {
 };
 
 function checkWinner() {
-    if (cell0.innerHTML !== ''  && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
+    if (winnerDeclared == true) {
+        return;
+    } else if (cell0.innerHTML !== ''  && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
     results.innerText = `${sign}'s win!`;
-    }
+    winnerDeclared = true;
+    } else if (cell3.innerHTML !== ''  && cell4.innerHTML == cell3.innerHTML && cell5.innerHTML == cell3.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell6.innerHTML !== ''  && cell7.innerHTML == cell6.innerHTML && cell8.innerHTML == cell7.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell0.innerHTML !== ''  && cell3.innerHTML == cell0.innerHTML && cell6.innerHTML == cell3.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell1.innerHTML !== ''  && cell4.innerHTML == cell1.innerHTML && cell7.innerHTML == cell4.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell2.innerHTML !== ''  && cell5.innerHTML == cell2.innerHTML && cell8.innerHTML == cell5.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell0.innerHTML !== ''  && cell4.innerHTML == cell0.innerHTML && cell0.innerHTML == cell8.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } else if (cell2.innerHTML !== ''  && cell4.innerHTML == cell2.innerHTML && cell2.innerHTML == cell6.innerHTML) {
+    results.innerText = `${sign}'s win!`;
+    winnerDeclared = true;
+    } 
 };
 
