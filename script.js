@@ -96,7 +96,7 @@ function determineMark(e) {
         turn = true;
     }
     return sign;
-};
+}
 
 function renderGameboard(e) {
     if (e == 0) {
@@ -126,30 +126,39 @@ function checkWinner() {
     } else if (cell0.innerHTML !== ''  && cell0.innerHTML == 'X' && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell3.innerHTML !== ''  && cell3.innerHTML == 'X' && cell4.innerHTML == cell3.innerHTML && cell5.innerHTML == cell3.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell6.innerHTML !== ''  && cell6.innerHTML == 'X' && cell7.innerHTML == cell6.innerHTML && cell8.innerHTML == cell7.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell0.innerHTML !== ''  && cell0.innerHTML == 'X' && cell3.innerHTML == cell0.innerHTML && cell6.innerHTML == cell3.innerHTML) {
     results.innerText = `${player1.name}'s win!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell1.innerHTML !== ''  && cell1.innerHTML == 'X' && cell4.innerHTML == cell1.innerHTML && cell7.innerHTML == cell4.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell2.innerHTML !== ''  && cell2.innerHTML == 'X' && cell5.innerHTML == cell2.innerHTML && cell8.innerHTML == cell5.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell0.innerHTML !== ''  && cell0.innerHTML == 'X' && cell4.innerHTML == cell0.innerHTML && cell0.innerHTML == cell8.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell2.innerHTML !== ''  && cell2.innerHTML == 'X' && cell4.innerHTML == cell2.innerHTML && cell2.innerHTML == cell6.innerHTML) {
     results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     }  else if (cell0.innerHTML !== ''  && cell0.innerHTML == 'X' && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
-    results.innerText = `${player1.name.name} wins!`;
+    results.innerText = `${player1.name} wins!`;
     winnerDeclared = true;
+    turn = true;
     } else if (cell0.innerHTML !== ''  && cell0.innerHTML == 'O' && cell1.innerHTML == cell2.innerHTML && cell0.innerHTML == cell1.innerHTML) {
     results.innerText = `${player2.name} wins!`;
     winnerDeclared = true;

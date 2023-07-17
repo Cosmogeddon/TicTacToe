@@ -32,8 +32,15 @@
     justify-content: center;
     height: 50px;
 }
+.names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    gap: 10px;
+}
 
 #namen {
-    height: 20px;
-    width: 40px;
+    height: 21px;
+    
 }
