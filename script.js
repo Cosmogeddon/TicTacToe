@@ -124,6 +124,9 @@ function checkWinner() {
     } else if (cell2.innerHTML !== ''  && cell4.innerHTML == cell2.innerHTML && cell2.innerHTML == cell6.innerHTML) {
     results.innerText = `${sign}'s win!`;
     winnerDeclared = true;
-    } 
+    } else if(cell0.innerHTML !== '' && cell1.innerHTML !== '' && cell2.innerHTML !== '' && cell3.innerHTML !== '' && cell4.innerHTML !== '' && cell5.innerHTML !== '' && cell6.innerHTML !== '' && cell7.innerHTML !== '' && cell8.innerHTML !== ''){
+        results.innerText = 'Tie';
+        winnerDeclared = true;
+    }
 };
 
